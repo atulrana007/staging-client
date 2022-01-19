@@ -1,5 +1,5 @@
 {
   "domain": "idqa.mcafee.com",
   "clientId": "fz2YwYovbQwPjQbvxszl2IQ0p3Q14k7Q",
-  "audience": "https://testAPI.mcafee.com"
+  "audience": "YOUR_API_IDENTIFIER"
 }

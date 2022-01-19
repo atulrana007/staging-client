@@ -18,13 +18,11 @@ const onRedirectCallback = (appState) => {
 const config = getConfig();
 
 const providerConfig = {
-  domain: config.domain,
-  clientId: config.clientId,
+  domain: "idqa.mcafee.com",
+  clientId: "fz2YwYovbQwPjQbvxszl2IQ0p3Q14k7Q",
+  ...(config.audience ? { audience: config.audience } : null),
   redirectUri: window.location.origin,
-  useRefreshTokens: true,
-  audience: "https://testAPI.mcafee.com",
   onRedirectCallback,
-  cacheLocation: "localstorage",
 };
 
 ReactDOM.render(

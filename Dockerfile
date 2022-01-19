@@ -41,4 +41,4 @@ ENV SERVER_PORT=3000
 ENV API_PORT=3001
 ENV NODE_ENV production
 
-CMD ["npm", "prod"]
+CMD ["yarn", "prod"]

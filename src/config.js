@@ -13,8 +13,8 @@ export function getConfig() {
       : null;
 
   return {
-    domain: configJson.domain,
-    clientId: configJson.clientId,
+    domain: "idqa.mcafee.com",
+    clientId: "fz2YwYovbQwPjQbvxszl2IQ0p3Q14k7Q",
     ...(audience ? { audience } : null),
   };
 }
