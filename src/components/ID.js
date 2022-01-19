@@ -10,7 +10,7 @@ const OTP = (props) => {
     return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
     }).join(''));
     const ans = JSON.parse(jsonPayload);
-
+    console.log(ans);
     return ans;
   };
   const parse = getOTP();

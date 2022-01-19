@@ -36,15 +36,4 @@ module.exports = function (app) {
       },
     })
   );
-  app.use(
-    createProxyMiddleware("/v2/ProductProvision/GetSubscriptions", {
-      target: "https://app-mcafee-qa-tenant.netlify.app/", // API endpoint 2
-
-      changeOrigin: true,
-
-      headers: {
-        Connection: "keep-alive",
-      },
-    })
-  );
 };

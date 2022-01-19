@@ -8,6 +8,8 @@ export default function ParseLoginAccessToken(props) {
   const { isAuthenticated, getAccessTokenSilently, getIdTokenClaims } =
     useAuth0();
   const getOTPAccessToken = ({ AccessToken }) => {
+    console.log("get-otp", response);
+    console.log("d");
     var base64Url = AccessToken.split(".")[1];
     var base64 = base64Url?.replace(/-/g, "+").replace(/_/g, "/");
     var jsonPayload = decodeURIComponent(
@@ -19,7 +21,21 @@ export default function ParseLoginAccessToken(props) {
         .join("")
     );
     const ans = JSON.parse(jsonPayload);
+    console.log(ans);
     return ans;
+    // return {
+    //   "iss": "https://mcafee-authdev.us.auth0.com/",
+    //   "sub": "auth0|11004692281177EA1FF59458641ACB8",
+    //   "aud": [
+    //       "https://testapi.mcafee.com",
+    //       "https://mcafee-authdev.us.auth0.com/userinfo"
+    //   ],
+    //   "iat": 1638461742,
+    //   "exp": 1638548142,
+    //   "azp": "SgWrPOtEqdG494T1TO7iKgv14diJ8ljJ",
+    //   "scope": "openid profile email login create offline_access",
+    //   "gty": "password"
+    // };
   };
   const [parseAccessToken, setParseAccessToken] = useState(
     getOTPAccessToken({ AccessToken: response?.AccessToken })

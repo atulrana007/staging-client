@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Button } from "reactstrap";
-import axios from 'axios';
 
 export default function ParseSubscription(props) {
   const { Subscription } = props;
@@ -10,33 +9,6 @@ export default function ParseSubscription(props) {
   );
   const onChange = (e) => {
     setSelectedValue(e.target.value);
-  };
-  const obj = localStorage.getItem('@@auth0spajs@@::fz2YwYovbQwPjQbvxszl2IQ0p3Q14k7Q::https://api.mcafee.com::openid profile email offline_access');
-  const jObj = JSON.parse(obj);
-  const ref_token = jObj?.body?.refresh_token;
-  const getToken = async (e) => {
-    e.preventDefault();
-    const optionsLogin = {
-      "content-type": "application/x-www-form-urlencoded",
-    };
-    const jsonBody = {
-      client_id: "fz2YwYovbQwPjQbvxszl2IQ0p3Q14k7Q",
-      //client_secret: "niZTToFk42DoIOUvShCWYH4S-gb2nND0JG9oHxAZj-en2b3hqCzIZgmvYKRYXoji",
-      grant_type: "refresh_token",
-      refresh_token: ref_token,
-      subrefid: Subscription[selectedValue]
-    };
-    const data = new URLSearchParams(jsonBody).toString();
-    try {
-      const token = await axios.post("/oauth/token", data,
-        {
-          headers: optionsLogin,
-        }
-      );
-      console.log(token.data.access_token);
-    } catch (err) {
-      console.log(err)
-    }
   };
   console.log("-----> value", Subscription[selectedValue]);
   return (
@@ -52,7 +24,7 @@ export default function ParseSubscription(props) {
             })
           : null}
       </select>
-      <Button color="primary" className="mt-5" onClick={(e) => getToken(e)}>
+      <Button color="primary" className="mt-5" onClick={() => {}}>
         Refresh token call
       </Button>
       {/* <div style={{ display: "flex", flexDirection: "column" }}>

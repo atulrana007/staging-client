@@ -7,6 +7,8 @@ const Tokens = (props) => {
 
   const getOTP = async (e) => {
     e.preventDefault();
+    console.log("get-otp", detailsState);
+    console.log("b");
     const optionsLogin = {
       "content-type": "application/x-www-form-urlencoded",
     };
@@ -18,7 +20,7 @@ const Tokens = (props) => {
       realm: "email",
       username: detailsState.email,
       hashedEmail: 'hash of the email',
-      audience: "https://api.mcafee.com",
+      audience: "https://testAPI.mcafee.com",
       scope: "openid profile email offline_access"
     };
     const data = new URLSearchParams(jsonBody).toString();
@@ -29,7 +31,7 @@ const Tokens = (props) => {
         }
       );
       setDetailsState({...detailsState, accessToken:token.data.access_token,idToken:token.data.id_token,refreshToken:token.data.refresh_token})
-      console.log(token.data.refresh_token);
+      console.log(token);
     } catch (err) {
       console.log(err)
     }

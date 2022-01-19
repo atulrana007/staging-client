@@ -22,7 +22,7 @@ const providerConfig = {
   clientId: config.clientId,
   redirectUri: window.location.origin,
   useRefreshTokens: true,
-  audience: "https://api.mcafee.com",
+  audience: "https://testAPI.mcafee.com",
   onRedirectCallback,
   cacheLocation: "localstorage",
 };
