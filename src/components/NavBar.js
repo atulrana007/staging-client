@@ -47,7 +47,6 @@ const NavBar = () => {
   console.log(setAffId);
   const [isOpen, setIsOpen] = useState(false);
   const { user, isAuthenticated, loginWithRedirect, logout } = useAuth0();
-  console.log("=----->", isAuthenticated);
   const toggle = () => setIsOpen(!isOpen);
 
   const logoutWithRedirect = () =>
