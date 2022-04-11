@@ -27,9 +27,8 @@ const NavBar = () => {
     console.log("in the hook ", useLocation().search);
     return new URLSearchParams(useLocation().search);
   }
-
+  let query = useQuery();
   const Culture = () => {
-    let query = useQuery();
     const parsedHash = new URLSearchParams(window.location.hash.substr(1));
     let culture = query.get("culture") ?? parsedHash.get("culture");
 
@@ -38,13 +37,18 @@ const NavBar = () => {
   const [culture, setCulture] = useState(Culture() || "en-us");
   console.log("-------->", setCulture);
   const AffId = () => {
-    let query = useQuery();
     const parsedHash = new URLSearchParams(window.location.hash.substr(1));
     let culture = query.get("affid") ?? parsedHash.get("affid");
     return culture;
   };
+  const getAAI = () => {
+    const parsedHash = new URLSearchParams(window.location.hash.substr(1));
+    let culture = query.get("aai") ?? parsedHash.get("aai");
+    return culture;
+  };
+  const [aai, setAAI] = useState(getAAI() || {});
   const [affid, setAffId] = useState(AffId() || "0");
-  console.log(setAffId);
+  console.log(setAffId, setAAI);
   const [isOpen, setIsOpen] = useState(false);
   const { user, isAuthenticated, loginWithRedirect, logout } = useAuth0();
   const toggle = () => setIsOpen(!isOpen);
@@ -106,7 +110,7 @@ const NavBar = () => {
                       loginWithRedirect({
                         culture: culture,
                         affid: affid,
-                        clientName: "service",
+                        aai: aai,
                         // affid: AffId(),
                         // fragment: `culture=pl-pl&aff_id=105`,
                         // &aai=${JSON.stringify(
